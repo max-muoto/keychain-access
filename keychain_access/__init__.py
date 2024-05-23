@@ -4,13 +4,13 @@
 import keychain_access
 
 # Store a password
-keychain_access.set_password("my_service", "my_account", "my_password")
+keychain_access.set("my_service", "my_account", "my_password")
 
 # Retrieve a password
-password = keychain_access.get_password("my_service", "my_account")
+password = keychain_access.get("my_service", "my_account")
 
 # Delete a password
-keychain_access.delete_password("my_service", "my_account")
+keychain_access.delete("my_service", "my_account")
 ```
 """
 

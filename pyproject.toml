@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Access to the OSX Keychain API in Python."
 authors = ["Max Muoto <maxmuoto@gmail.com>"]
 readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"

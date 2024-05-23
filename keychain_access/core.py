@@ -68,8 +68,9 @@ def find(account: str, service: str) -> str | None:
         >>> keychain_access.find("my_account", "my_service")
         "my_password"
 
+        If the password is not found:
         >>> keychain_access.find("my_account", "my_service")
-        b"my_password"
+        None
     """
     query = NSMutableDictionary.dictionary()
     query[kSecClass] = kSecClassGenericPassword

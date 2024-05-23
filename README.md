@@ -1,6 +1,6 @@
 # keychain_access
 
-`keychain_access` is a simple Python library that wraps the objective-c `Security` framework to access the macOS keychain, allowing you to store and retrieve passwords for your OSX applications. Due to this, `pyobjc` is required as a dependency.
+`keychain_access` is a simple Python library that wraps the objective-c Security framework to access the macOS keychain, allowing you to store and retrieve passwords for your OSX applications. Due to this, `pyobjc` is required as a dependency.
 
 ## Installation
 

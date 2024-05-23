@@ -16,6 +16,6 @@ keychain_access.delete("my_service", "my_account")
 
 from __future__ import annotations
 
-from keychain_access.core import add, delete, find
+from keychain_access.core import add, delete, get
 
-__all__ = ["add", "find", "delete"]
+__all__ = ["add", "get", "delete"]

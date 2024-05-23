@@ -18,10 +18,10 @@ def cleanup():
 def test_keychain_access():
     """Test general E2E functionality."""
     keychain_access.add("my_account", "my_service", "my_password")
-    assert keychain_access.find("my_account", "my_service") == "my_password"
+    assert keychain_access.get("my_account", "my_service") == "my_password"
 
     keychain_access.delete("my_account", "my_service")
-    assert keychain_access.find("my_account", "my_service") is None
+    assert keychain_access.get("my_account", "my_service") is None
 
 
 def test_keychain_access_error():

@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "keychain-access"
+version = "0.1.0"
+description = "Access to the OSX Keychain API in Python."
+authors = ["Max Muoto <maxmuoto@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pyobjc = "^10.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pyright = "^1.1.364"
+ruff = "^0.4.5"
+pytest = "^8.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py38"
+line-length = 100
+extend-include = ["I"]
+
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+
+[tool.pyright]
+include = ["keychain_access", "typings"]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "src/experimental",
+    "src/typestubs",
+    "**/venv",
+]
+pythonVersion = "3.8"
+typeCheckingMode = "strict"

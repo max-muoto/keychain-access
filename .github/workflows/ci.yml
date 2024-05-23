@@ -26,14 +26,14 @@ jobs:
         run: poetry install --with dev
 
       - name: Run tests
-        run: pytest
+        run: poetry run pytest
 
       - name: Run ruff
         run: |
-          ruff check .
-          ruff format --check
+          poetry run ruff check .
+          poetry run ruff format --check
 
       - name: Run pyright
-        run: pyright
+        run: poetry run pyright
 
   

@@ -52,8 +52,8 @@ def add(account: str, service: str, password: str | bytes) -> None:
         raise KeychainError(f"Failed to add item to keychain (status={status})")
 
 
-def find(account: str, service: str) -> str | None:
-    """Find a password in the keychain.
+def get(account: str, service: str) -> str | None:
+    """Get a password in the keychain.
 
     Args:
         account: The account name.
@@ -66,11 +66,11 @@ def find(account: str, service: str) -> str | None:
         KeychainError: If an internal error occurred.
 
     Examples:
-        >>> keychain_access.find("my_account", "my_service")
+        >>> keychain_access.get("my_account", "my_service")
         "my_password"
 
         If the password is not found:
-        >>> keychain_access.find("my_account", "my_service")
+        >>> keychain_access.get("my_account", "my_service")
         None
     """
     query = NSMutableDictionary.dictionary()

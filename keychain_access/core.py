@@ -43,7 +43,7 @@ def add(account: str, service: str, password: str | bytes) -> None:
     query[kSecValueData] = password.encode() if isinstance(password, str) else password
 
     try:
-        status = SecItemAdd(query, None)
+        status, _ = SecItemAdd(query, None)
     except Exception as e:
         raise KeychainError(str(e)) from e
 
@@ -80,11 +80,11 @@ def find(account: str, service: str) -> str | None:
     query[kSecMatchLimit] = kSecMatchLimitOne
 
     try:
-        data, _ = SecItemCopyMatching(query, None)
+        _, data = SecItemCopyMatching(query, None)
     except Exception as e:
         raise KeychainError(str(e)) from e
 
-    return data.bytes().tobytes().decode() if data is not None else None
+    return data.bytes().tobytes().decode() if data else None
 
 
 def delete(account: str, service: str) -> None:

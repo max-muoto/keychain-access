@@ -13,8 +13,8 @@ password = keychain_access.get_password('my_service', 'my_account')
 keychain_access.delete_password('my_service', 'my_account')
 ```
 """
+from __future__ import annotations
 
-from keychain_access.core import add, find, delete
-
+from keychain_access.core import add, delete, find
 
 __all__ = ["add", "find", "delete"]

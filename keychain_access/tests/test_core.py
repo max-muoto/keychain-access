@@ -1,7 +1,11 @@
+from __future__ import annotations
+
+import contextlib
+
+import pytest
+
 import keychain_access
 from keychain_access.exceptions import KeychainError
-import pytest
-import contextlib
 
 
 @pytest.fixture(autouse=True)

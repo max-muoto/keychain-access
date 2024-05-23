@@ -1,20 +1,21 @@
 from __future__ import annotations
 
-from keychain_access.exceptions import KeychainError
 from Foundation import NSMutableDictionary
 from Security import (
     SecItemAdd,
     SecItemCopyMatching,
     SecItemDelete,
+    kSecAttrAccount,
+    kSecAttrService,
     kSecClass,
     kSecClassGenericPassword,
-    kSecAttrService,
-    kSecAttrAccount,
-    kSecValueData,
-    kSecReturnData,
     kSecMatchLimit,
     kSecMatchLimitOne,
+    kSecReturnData,
+    kSecValueData,
 )
+
+from keychain_access.exceptions import KeychainError
 
 
 def add(account: str, service: str, password: str | bytes) -> None:

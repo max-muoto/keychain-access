@@ -8,8 +8,8 @@ license = "MIT"
 include = ["keychain_access/py.typed"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-pyobjc = "^10.2"
+python = "^3.9"
+pyobjc = ">=10.0.0, <12.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,7 +22,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-target-version = "py38"
+target-version = "py39"
 line-length = 100
 lint.extend-select = ["I"]
 
@@ -41,5 +41,5 @@ exclude = [
     "src/typestubs",
     "**/venv",
 ]
-pythonVersion = "3.8"
+pythonVersion = "3.9"
 typeCheckingMode = "strict"

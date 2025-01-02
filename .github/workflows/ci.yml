@@ -13,54 +13,21 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1.3.1
-
-      - name: Install dependencies
-        run: poetry install --with dev
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
 
       - name: Run tests
-        run: poetry run pytest
+        run: uv run --python ${{ matrix.python-version }} pytest
 
       - name: Run ruff
         run: |
-          poetry run ruff check .
-          poetry run ruff format --check
+          uv run ruff check .
+          uv run ruff format --check
 
       - name: Run pyright
-        run: poetry run pyright
-
-  deploy:
-    needs: build-and-test
-    runs-on: macos-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1.3.1
-
-      - name: Install dependencies
-        run: poetry install
-
-      - name: Build and Publish to PyPI
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          poetry build
-          poetry publish
+        run: uv run pyright
